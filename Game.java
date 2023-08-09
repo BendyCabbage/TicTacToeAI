@@ -16,7 +16,14 @@ public class Game {
 
     public static void main(String[] args) {
         Game game = new Game();
-        game.playGameAgainstAI();
+
+        Scanner scanner = new Scanner(System.in);
+        System.out.printf("Type 1 to play against another player or 2 for an AI: ");
+        if (scanner.nextLine().equals("1")) {
+            game.playGameAgainstPlayer();
+        } else {
+            game.playGameAgainstAI();
+        }
     }
 
     public void playGameAgainstPlayer() {
@@ -31,9 +38,6 @@ public class Game {
 
             playMove(new Move(row, col));
             System.out.println(this);
-
-            MoveEval moveEval = miniMax(this, 10 - turnNumber, Integer.MIN_VALUE, Integer.MAX_VALUE);
-            System.out.printf("Best move: %d %d => %d\n", moveEval.getMove().getRow(), moveEval.getMove().getCol(), moveEval.getEval());
         }
 
         scanner.close();
@@ -250,6 +254,4 @@ public class Game {
         }
         return possibleMoves;
     }
-} Game {
-    
 }
